@@ -1,6 +1,7 @@
-import {AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CPU, Motherboard, Product, VideoCard} from '../../shared/models/product';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-modal-edit',
@@ -10,6 +11,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class ModalEditComponent implements OnInit {
 
   @Input('product') product: Product;
+
+  @Output() saveEmitter = new EventEmitter();
+  @Output() addEmitter = new EventEmitter();
+  @Output() closeEmitter = new EventEmitter();
 
   theFormGroup: FormGroup;
   filler = {category:'',id:0,name:'',price:0,vendorCode:'', chipset:'',formFactor:'', socket:'', coreNumber: 0, frequency: 0, videoMemory: 0};
@@ -67,4 +72,10 @@ export class ModalEditComponent implements OnInit {
     this.filler.videoMemory = product['videoMemory'];
   }
 
+  submitForm() {
+
+  }
+  closeForm() {
+
+  }
 }

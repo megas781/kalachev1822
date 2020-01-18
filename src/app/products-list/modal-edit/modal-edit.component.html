@@ -5,7 +5,7 @@
       <div class="modal-header">
         <h5 class="modal-title">Редактирование</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" (click)="closeEmitter.emit()">&times;</span>
         </button>
       </div>
       <div class="modal-body">
@@ -73,8 +73,8 @@
 <!--        конец body-->
       </div>
       <div class="modal-footer">
-        <input type="submit" class="btn btn-primary" value="Сохранить изменения">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <input type="submit" class="btn btn-primary" value="Сохранить изменения" (submit)="submitForm()">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeEmitter.emit()">Закрыть</button>
       </div>
     </form>
 
