@@ -9,6 +9,7 @@ import { ProductCellComponent } from './products-list/product-cell/product-cell.
 import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { ModalEditComponent } from './products-list/modal-edit/modal-edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {RouterModule} from '@angular/router';
     MainPageComponent,
     ProductsListComponent,
     ProductCellComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ModalEditComponent
   ],
   imports: [
     BrowserModule,
