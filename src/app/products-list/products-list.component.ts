@@ -68,7 +68,11 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    console.log(product);
+    let deleteIndex = this.productService.products.findIndex(function(product2) {
+      return product.id === product2.id;
+    });
+    this.productService.products.splice(deleteIndex, 1);
+    this.productService.deleteProduct(product);
   }
   addProduct() {
     this.isNewProduct = true;

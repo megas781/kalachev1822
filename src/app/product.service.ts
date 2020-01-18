@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Product, Motherboard, CPU, VideoCard} from './shared/models/product';
-import {ajaxGet, ajaxPost, ajaxPut} from 'rxjs/internal-compatibility';
+import {ajaxDelete, ajaxGet, ajaxPost, ajaxPut} from 'rxjs/internal-compatibility';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
@@ -72,6 +72,12 @@ export class ProductService {
 
   postNewProduct(product: Product) {
     ajaxPost(`http://localhost:3000/products`, product.getJson()).subscribe(function(ajax) {
+      console.log(ajax.response);
+    })
+  }
+
+  deleteProduct(product: Product) {
+    ajaxDelete(`http://localhost:3000/products/${product.id}`).subscribe(function(ajax) {
       console.log(ajax.response);
     })
   }
