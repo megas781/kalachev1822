@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-products-list',
@@ -15,8 +16,12 @@ export class ProductsListComponent implements OnInit {
 
   activeSortProperty: string = 'price';
 
-  constructor() {
-
+  constructor(
+    public productService: ProductService
+  ) {
+    productService.fetchProducts().then(function(products) {
+      console.log(products);
+    })
   }
 
   ngOnInit() {

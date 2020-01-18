@@ -28,7 +28,7 @@ export class Motherboard extends Product {
     this.formFactor = formFactor;
   }
 
-  public static init(id: string, name: string, vendorCode: string, price: string, chipset: string, formFactor: string) {
+  public static init(id: string, name: string, vendorCode: string, price: string, chipset: string, formFactor: string): Motherboard {
     return new Motherboard(Number(id), name, vendorCode, Number(price), chipset, formFactor)
   }
 
@@ -48,7 +48,7 @@ export class CPU extends Product {
     this.frequency = frequency;
   }
 
-  public static init(id: string, name: string, vendorCode: string, price: string, socket: string, coreNumber: string, frequency: string) {
+  public static init(id: string, name: string, vendorCode: string, price: string, socket: string, coreNumber: string, frequency: string): CPU {
     return new CPU(Number(id), name, vendorCode, Number(price), socket, Number(coreNumber), Number(frequency))
   }
 
@@ -64,7 +64,7 @@ export class VideoCard extends Product {
     this.videoMemory = videoMemory;
   }
 
-  public static init(id: string, name: string, vendorCode: string, price: string, videoMemory: string) {
+  public static init(id: string, name: string, vendorCode: string, price: string, videoMemory: string): VideoCard {
     return new VideoCard(Number(id), name, vendorCode, Number(price), Number(videoMemory))
   }
   getDescription(): string {
