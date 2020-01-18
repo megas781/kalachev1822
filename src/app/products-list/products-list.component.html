@@ -36,7 +36,7 @@
   </thead>
   <tbody>
   <tr class="product-cell-selector"
-  *ngFor="let product of productService.products"
+  *ngFor="let product of productService.products | productSort : this.activeSortProperty : getActiveSortDirection()"
   [product]="product"></tr>
   </tbody>
 </table>

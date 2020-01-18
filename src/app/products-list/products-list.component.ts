@@ -15,6 +15,9 @@ export class ProductsListComponent implements OnInit {
   };
 
   activeSortProperty: string = 'price';
+  getActiveSortDirection() {
+    return this.sortableProperties['vendor-code'] + this.sortableProperties.name + this.sortableProperties.price
+  }
 
   constructor(
     public productService: ProductService

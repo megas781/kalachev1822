@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { ModalEditComponent } from './products-list/modal-edit/modal-edit.component';
+import { ProductSortPipe } from './product-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModalEditComponent } from './products-list/modal-edit/modal-edit.compon
     ProductsListComponent,
     ProductCellComponent,
     NotFoundComponent,
-    ModalEditComponent
+    ModalEditComponent,
+    ProductSortPipe
   ],
   imports: [
     BrowserModule,
