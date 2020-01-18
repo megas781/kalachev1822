@@ -16,9 +16,4 @@ export class AppComponent {
     public router: Router
   ) {
   }
-
-  //роутинг вместо ссылок
-  // navLinkTapped(path: string) {
-  //   this.router.navigateByUrl(path).then(r => console.log());
-  // }
 }

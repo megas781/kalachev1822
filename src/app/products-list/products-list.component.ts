@@ -13,6 +13,9 @@ export class ProductsListComponent implements OnInit {
   searchType: string = 'filter-by-name';
   searchString: string = '';
 
+  // public isShowingModal = false;
+  public editedProduct?: Product = null;
+
   public sortableProperties = {
     'vendor-code': 0,
     'name': 0,
@@ -60,7 +63,13 @@ export class ProductsListComponent implements OnInit {
 
   editProduct(product: Product) {
     console.log(product);
+    this.editedProduct = product;
   }
+  // private showModal(product: Product) {
+  //   // this.isShowingModal = true;
+  //
+  // }
+
   deleteProduct(product: Product) {
     console.log(product);
   }

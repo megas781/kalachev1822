@@ -16,11 +16,4 @@ export class ProductCellComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // editButtonTapped(product: Product) {
-  //
-  // }
-  // deleteButtonTapped(product: Product) {
-  //
-  // }
 }

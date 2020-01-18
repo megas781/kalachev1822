@@ -44,4 +44,4 @@
   (deleteEventEmitter)="deleteProduct($event)"></tr>
   </tbody>
 </table>
-<app-modal-edit></app-modal-edit>
+<app-modal-edit *ngIf="this.editedProduct"></app-modal-edit>
