@@ -26,7 +26,7 @@ export class ModalEditComponent implements OnInit {
     console.log(`onInit??`);
     console.log(self.product);
     if (self.product) {
-      this.applyProductValues(this.product);
+      this.applyProductValuesForFiller(this.product);
     }
 
     console.log('filler');
@@ -47,7 +47,7 @@ export class ModalEditComponent implements OnInit {
 
 
 
-  private applyProductValues(product: Product) {
+  private applyProductValuesForFiller(product: Product) {
     console.log('appliable product');
     console.log(product);
     if (product instanceof Motherboard) {
@@ -72,10 +72,27 @@ export class ModalEditComponent implements OnInit {
     this.filler.videoMemory = product['videoMemory'];
   }
 
+  private applyFillerValuesForProduct(product: Product){
+    // this.product['id'] = this.theFormGroup.controls['id'].value;
+    this.product['name'] = this.theFormGroup.controls['name'].value;
+    this.product['vendorCode'] = this.theFormGroup.controls['vendor-code'].value;
+    this.product['price'] = this.theFormGroup.controls['price'].value;
+    this.product['chipset'] = this.theFormGroup.controls['chipset'].value;
+    this.product['formFactor'] = this.theFormGroup.controls['form-factor'].value;
+    this.product['socket'] = this.theFormGroup.controls['socket'].value;
+    this.product['coreNumber'] = this.theFormGroup.controls['core-number'].value;
+    this.product['frequency'] = this.theFormGroup.controls['frequency'].value;
+    this.product['videoMemory'] = this.theFormGroup.controls['video-memory'].value;
+  }
+
   submitForm() {
 
+    this.applyFillerValuesForProduct(this.product);
+    // this.product.name = 'asdf';
+    console.log(this.product);
+    this.closeEmitter.emit();
   }
-  closeForm() {
-
-  }
+  // closeForm() {
+  //
+  // }
 }
