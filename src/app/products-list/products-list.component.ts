@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -7,6 +8,9 @@ import {ProductService} from '../product.service';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
+
+  searchType: string = 'filter-by-name';
+  searchString: string = '';
 
   public sortableProperties = {
     'vendor-code': 0,
@@ -20,11 +24,13 @@ export class ProductsListComponent implements OnInit {
   }
 
   constructor(
-    public productService: ProductService
+    public productService: ProductService,
+    public activatedRoute: ActivatedRoute
   ) {
     productService.fetchProducts().then(function(products) {
       console.log(products);
-    })
+    });
+
   }
 
   ngOnInit() {

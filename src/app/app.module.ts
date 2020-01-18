@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { ModalEditComponent } from './products-list/modal-edit/modal-edit.component';
 import { ProductSortPipe } from './product-sort.pipe';
+import { ProductFilterPipe } from './product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductSortPipe } from './product-sort.pipe';
     ProductCellComponent,
     NotFoundComponent,
     ModalEditComponent,
-    ProductSortPipe
+    ProductSortPipe,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
-app-product-cell {
-  display: table-row;
-}
+/*app-product-cell {*/
+/*  display: table-row;*/
+/*}*/
 
+.price {
+  white-space: nowrap;
+}
