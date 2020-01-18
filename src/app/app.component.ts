@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'kalachev1822';
+  showMobileNavbar = true;
+  burgerButtonTapped() {
+    this.showMobileNavbar = !this.showMobileNavbar;
+  }
 }
