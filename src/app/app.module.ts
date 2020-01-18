@@ -24,8 +24,8 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: MainPageComponent},
-      {path: 'products', component: MainPageComponent},
-      {path: 'products/:category', component: MainPageComponent},
+      {path: 'products', component: ProductsListComponent},
+      {path: 'products/:category', component: ProductsListComponent},
     ])
   ],
   providers: [],
