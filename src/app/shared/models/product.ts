@@ -17,6 +17,27 @@ export abstract class Product {
   public getDescription(): string {
     return '';
   }
+  getCategory(): string {
+    if (this instanceof Motherboard) {
+      return 'motherboards';
+    } else if (this instanceof CPU) {
+      return 'cpu';
+    } else if (this instanceof VideoCard) {
+      return 'video-cards'
+    } else {
+      return null;
+    }
+  }
+
+  getJson(): Object {
+    return {
+      name: this.name,
+      id: String(this.id),
+      'vendor-code':this.vendorCode,
+      'price': String(this.price),
+      'category': this.getCategory()
+    }
+  }
 }
 export class Motherboard extends Product {
   chipset: string;
@@ -34,6 +55,17 @@ export class Motherboard extends Product {
 
   public getDescription(): string {
     return super.getDescription() + `Чипсет: ${this.chipset}, форм-фактор: ${this.formFactor}`;
+  }
+  getJson(): Object {
+    return {
+      name: this.name,
+      id: String(this.id),
+      'vendor-code':this.vendorCode,
+      'price': String(this.price),
+      'chipset': this.chipset,
+      'form-factor': this.formFactor,
+      'category': this.getCategory()
+    }
   }
 }
 export class CPU extends Product {
@@ -55,6 +87,19 @@ export class CPU extends Product {
   public getDescription(): string {
     return super.getDescription() + `Сокет: ${this.socket}, количество ядер: ${this.coreNumber}, частота: ${this.frequency} МГц`;
   }
+
+  getJson(): Object {
+    return {
+      name: this.name,
+      id: String(this.id),
+      'vendor-code':this.vendorCode,
+      'price': String(this.price),
+      'socket': this.socket,
+      'core-number': String(this.coreNumber),
+      'frequency': String(this.frequency),
+      'category': this.getCategory()
+    }
+  }
 }
 export class VideoCard extends Product {
   videoMemory: number;
@@ -69,5 +114,15 @@ export class VideoCard extends Product {
   }
   getDescription(): string {
     return super.getDescription() + `Видеопамять: ${this.videoMemory} Гб`;
+  }
+  getJson(): Object {
+    return {
+      name: this.name,
+      id: String(this.id),
+      'vendor-code':this.vendorCode,
+      'price': String(this.price),
+      'video-memory': String(this.videoMemory),
+      'category': this.getCategory()
+    }
   }
 }

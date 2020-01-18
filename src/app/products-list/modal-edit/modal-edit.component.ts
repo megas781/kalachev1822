@@ -1,6 +1,7 @@
 import {AfterContentChecked, AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CPU, Motherboard, Product, VideoCard} from '../../shared/models/product';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ProductService} from '../../product.service';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class ModalEditComponent implements OnInit {
   theFormGroup: FormGroup;
   filler = {category:'',id:0,name:'',price:0,vendorCode:'', chipset:'',formFactor:'', socket:'', coreNumber: 0, frequency: 0, videoMemory: 0};
 
-  constructor() { }
+  constructor(
+    public productService: ProductService
+  ) { }
 
   ngOnInit() {
     let self = this;
@@ -91,6 +94,8 @@ export class ModalEditComponent implements OnInit {
     // this.product.name = 'asdf';
     console.log(this.product);
     this.closeEmitter.emit();
+    this.productService.putUpdatedProduct(this.product);
+
   }
   // closeForm() {
   //

@@ -65,10 +65,6 @@ export class ProductsListComponent implements OnInit {
     console.log(product);
     this.editedProduct = product;
   }
-  // private showModal(product: Product) {
-  //   // this.isShowingModal = true;
-  //
-  // }
 
   deleteProduct(product: Product) {
     console.log(product);

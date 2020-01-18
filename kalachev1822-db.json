@@ -1,22 +1,22 @@
 {
   "products": [
     {
-      "category": "motherboards",
-      "id": "1",
       "name": "Материнская плата GIGABYTE GA-AB350M-DS3H V2",
+      "id": "1",
       "vendor-code": "1317748",
-      "price": "3890",
+      "price": "38900",
       "chipset": "AMD B350",
-      "form-factor": "Micro-ATX"
+      "form-factor": "Micro-ATX",
+      "category": "motherboards"
     },
     {
-      "category": "motherboards",
+      "name": "11Материнская плата GIGABYTE X470 AORUS ULTRA GAMING",
       "id": "2",
-      "name": "Материнская плата GIGABYTE X470 AORUS ULTRA GAMING",
       "vendor-code": "4317748",
       "price": "7490",
       "chipset": "AMD X470",
-      "form-factor": "Standard-ATX"
+      "form-factor": "Standard-ATX",
+      "category": "motherboards"
     },
     {
       "category": "cpu",
@@ -24,7 +24,7 @@
       "name": "Intel Core i3-9300 OEM",
       "vendor-code": "4317568",
       "price": "12899",
-      "socket": "LGA 1151-v2\n",
+      "socket": "LGA 1151-v2",
       "core-number": "4",
       "frequency": "3700"
     },
@@ -34,7 +34,7 @@
       "name": "Intel Core i5-8600",
       "vendor-code": "4357501",
       "price": "18899",
-      "socket": "LGA 1152-v3\n",
+      "socket": "LGA 1152-v3",
       "core-number": "4",
       "frequency": "3800"
     },
@@ -54,7 +54,6 @@
       "price": "10099",
       "video-memory": "4"
     }
-
   ],
   "metadata": {
     "lastId": "6"

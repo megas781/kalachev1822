@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Product, Motherboard, CPU, VideoCard} from './shared/models/product';
-import {ajaxGet} from 'rxjs/internal-compatibility';
+import {ajaxGet, ajaxPut} from 'rxjs/internal-compatibility';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 // import * as http from 'http';
 
@@ -29,7 +29,7 @@ export class ProductService {
       // console.log(url);
       ajaxGet(url).subscribe(function(ajax) {
 
-        // console.log(ajax.response);
+        console.log(ajax.response);
         if (ajax.status !== 200) {
           return;
         }
@@ -49,6 +49,8 @@ export class ProductService {
 
              }
           });
+           console.log('m');
+           console.log(self.products[0].getJson());
            resolve(self.products);
         } else {
           reject();
@@ -56,36 +58,10 @@ export class ProductService {
       });
     })
   }
-  // fetchMotherboards(): Promise<Motherboard[]> {
-  //   let self = this;
-  //   return new Promise<Motherboard[]>(function(resolve, reject) {
-  //     ajaxGet('http://localhost:3000/products?category=motherboard').subscribe(function(ajax) {
-  //
-  //       if (ajax.response instanceof Array) {
-  //         self.products = (<Array<Object>>ajax.response).map(function(productJson) {
-  //           return Motherboard.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['chipset'], productJson['form-factor']);
-  //         });
-  //         resolve(<Motherboard[]>self.products);
-  //       } else {
-  //         reject();
-  //       }
-  //     });
-  //   })
-  // }
-  // fetchMotherboards(): Promise<CPU[]> {
-  //   let self = this;
-  //   return new Promise<CPU[]>(function(resolve, reject) {
-  //     ajaxGet('http://localhost:3000/products?category=cpu').subscribe(function(ajax) {
-  //
-  //       if (ajax.response instanceof Array) {
-  //         self.products = (<Array<Object>>ajax.response).map(function(productJson) {
-  //           return Motherboard.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['chipset'], productJson['form-factor']);
-  //         });
-  //         resolve(<Motherboard[]>self.products);
-  //       } else {
-  //         reject();
-  //       }
-  //     });
-  //   })
-  // }
+
+  putUpdatedProduct(product: Product) {
+    ajaxPut(`http://localhost:3000/products/${product.id}`, product.getJson()).subscribe(function(ajax) {
+      console.log(ajax.response);
+    })
+  }
 }

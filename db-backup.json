@@ -24,7 +24,7 @@
       "name": "Intel Core i3-9300 OEM",
       "vendor-code": "4317568",
       "price": "12899",
-      "socket": "LGA 1151-v2\n",
+      "socket": "LGA 1151-v2",
       "core-number": "4",
       "frequency": "3700"
     },
@@ -34,7 +34,7 @@
       "name": "Intel Core i5-8600",
       "vendor-code": "4357501",
       "price": "18899",
-      "socket": "LGA 1152-v3\n",
+      "socket": "LGA 1152-v3",
       "core-number": "4",
       "frequency": "3800"
     },
