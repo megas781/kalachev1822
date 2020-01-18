@@ -1,14 +1,14 @@
 .modal {
   max-height: 94% !important;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .modal-shown {
   display: block !important;
 }
-
-.modal-dialog, .modal-content {
-  max-height: 100%;
+.modal-dialog {
 }
 .modal-content {
-
+}
+.modal-dialog, .modal-content {
+  max-height: 100%;
 }
