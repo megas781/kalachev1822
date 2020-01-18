@@ -52,15 +52,15 @@ export class ModalEditComponent implements OnInit {
     console.log(this.filler);
     this.theFormGroup = new FormGroup({
       'name': new FormControl(self.filler.name, Validators.required),
-      'price': new FormControl(self.filler.price, Validators.pattern(/^[0-9,\.]{2,}$/)),
+      'price': new FormControl(self.filler.price, Validators.pattern(/^[1-9]+($|[,\.][1-9]{1,2}$)/)),
       'vendor-code': new FormControl(self.filler.vendorCode, Validators.required),
       'category': new FormControl(self.filler.category, Validators.required),
       'chipset': new FormControl(self.filler.chipset, Validators.required),
       'form-factor': new FormControl(self.filler.formFactor, Validators.required),
       'socket': new FormControl(self.filler.socket, Validators.required),
-      'core-number': new FormControl(self.filler.coreNumber, Validators.pattern(/^[0-9]{2,}$/)),
-      'frequency': new FormControl(self.filler.frequency, Validators.pattern(/^[0-9]{2,}$/)),
-      'video-memory': new FormControl(self.filler.videoMemory, Validators.pattern(/^[0-9]{2,}$/)),
+      'core-number': new FormControl(self.filler.coreNumber, Validators.pattern(/^[1-9][0-9]+$/)),
+      'frequency': new FormControl(self.filler.frequency, Validators.pattern(/^[1-9][0-9]+$/)),
+      'video-memory': new FormControl(self.filler.videoMemory, Validators.pattern(/^[1-9][0-9]+$/)),
     });
   }
 
