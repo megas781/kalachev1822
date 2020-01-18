@@ -4,3 +4,15 @@
 .description-column {
   display: none;
 }
+.search-select {
+  /*width: 80px !important;*/
+  background-color: #f5f5f5;
+}
+
+.search-form-control{
+  flex: none;
+}
+
+.search-input {
+  /*width: 100%;*/
+}
