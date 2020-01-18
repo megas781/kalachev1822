@@ -7,7 +7,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductCellComponent } from './products-list/product-cell/product-cell.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { ModalEditComponent } from './products-list/modal-edit/modal-edit.component';
 import { ProductSortPipe } from './product-sort.pipe';
@@ -34,10 +34,11 @@ import { ProductFilterPipe } from './product-filter.pipe';
       // {path: 'products/motherboards', component: ProductsListComponent},
       // {path: 'products/cpu', component: ProductsListComponent},
       // {path: 'products/video-cards', component: ProductsListComponent},
-      {path: "products/:category", component: ProductsListComponent},
+      {path: 'products/:category', component: ProductsListComponent},
       {path: 'products', component: ProductsListComponent},
       {path: '**', component: NotFoundComponent},
-    ])
+    ]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

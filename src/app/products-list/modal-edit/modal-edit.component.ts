@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {CPU, Motherboard, Product, VideoCard} from '../../shared/models/product';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -9,21 +9,24 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ModalEditComponent implements OnInit {
 
-  @Input('product') product?: Product;
+  @Input('product') product: Product;
 
-  formGroup: FormGroup;
+  theFormGroup: FormGroup;
   filler = {category:'',id:0,name:'',price:0,vendorCode:'', chipset:'',formFactor:'', socket:'', coreNumber: 0, frequency: 0, videoMemory: 0};
 
   constructor() { }
 
   ngOnInit() {
-
     let self = this;
-    if (self.product !== null) {
-
+    console.log(`onInit??`);
+    console.log(self.product);
+    if (self.product) {
+      this.applyProductValues(this.product);
     }
 
-    this.formGroup = new FormGroup({
+    console.log('filler');
+    console.log(this.filler);
+    this.theFormGroup = new FormGroup({
       "name": new FormControl(self.filler.name, Validators.required),
       "price": new FormControl(self.filler.price, Validators.required),
       "vendor-code": new FormControl(self.filler.vendorCode, Validators.required),
@@ -37,7 +40,11 @@ export class ModalEditComponent implements OnInit {
     })
   }
 
+
+
   private applyProductValues(product: Product) {
+    console.log('appliable product');
+    console.log(product);
     if (product instanceof Motherboard) {
       this.filler.category = 'motherboards';
     } else if(product instanceof CPU) {
