@@ -12,6 +12,7 @@
            aria-label="Username" aria-describedby="basic-addon1"
     [(ngModel)]="searchString">
   </div>
+  <button class="btn btn-info" (click)="addProduct()">Добавить</button>
 </div>
 
 <table class="table">
@@ -44,5 +45,5 @@
   (deleteEventEmitter)="deleteProduct($event)"></tr>
   </tbody>
 </table>
-<app-modal-edit *ngIf="this.editedProduct" [product]="editedProduct"
-(closeEmitter)="this.editedProduct = null"></app-modal-edit>
+<app-modal-edit *ngIf="this.editedProduct || this.isNewProduct" [product]="editedProduct"
+(closeEmitter)="modalClosed()"></app-modal-edit>

@@ -5,7 +5,7 @@
       <div class="modal-header">
         <h5 class="modal-title">Редактирование</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" (click)="closeEmitter.emit()">&times;</span>
+          <span aria-hidden="true" (click)="closeButtonTapped()">&times;</span>
         </button>
       </div>
       <div class="modal-body">
@@ -36,7 +36,7 @@
           </select>
         </div>
 
-        <div [ngSwitch]="filler.category">
+        <div [ngSwitch]="this.theFormGroup.controls['category'].value">
           <!--        Материнская плата-->
           <div class="form-group" *ngSwitchCase="'motherboards'">
             <div class="form-group">
@@ -73,8 +73,8 @@
 <!--        конец body-->
       </div>
       <div class="modal-footer">
-        <input type="submit" class="btn btn-primary" value="Сохранить изменения" (click)="submitForm()">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeEmitter.emit()">Закрыть</button>
+        <input type="submit" class="btn btn-primary" value="Сохранить изменения" (click)="submitForm()" [disabled]="!this.isFormValid()">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeButtonTapped()">Закрыть</button>
       </div>
     </form>
 

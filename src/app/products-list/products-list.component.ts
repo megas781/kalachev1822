@@ -15,6 +15,7 @@ export class ProductsListComponent implements OnInit {
 
   // public isShowingModal = false;
   public editedProduct?: Product = null;
+  public isNewProduct = false;
 
   public sortableProperties = {
     'vendor-code': 0,
@@ -68,6 +69,14 @@ export class ProductsListComponent implements OnInit {
 
   deleteProduct(product: Product) {
     console.log(product);
+  }
+  addProduct() {
+    this.isNewProduct = true;
+  }
+
+  modalClosed() {
+    this.editedProduct = null;
+    this.isNewProduct = false;
   }
 
 }

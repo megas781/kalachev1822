@@ -12,17 +12,31 @@ import {ProductService} from '../../product.service';
 export class ModalEditComponent implements OnInit {
 
   @Input('product') product: Product;
+  @Input('isNewProduct') isNewProduct: boolean;
 
   @Output() saveEmitter = new EventEmitter();
   @Output() addEmitter = new EventEmitter();
   @Output() closeEmitter = new EventEmitter();
 
   theFormGroup: FormGroup;
-  filler = {category:'',id:0,name:'',price:0,vendorCode:'', chipset:'',formFactor:'', socket:'', coreNumber: 0, frequency: 0, videoMemory: 0};
+  filler = {
+    category: '',
+    id: 0,
+    name: '',
+    price: 0,
+    vendorCode: '',
+    chipset: '',
+    formFactor: '',
+    socket: '',
+    coreNumber: 0,
+    frequency: 0,
+    videoMemory: 0
+  };
 
   constructor(
     public productService: ProductService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     let self = this;
@@ -35,19 +49,18 @@ export class ModalEditComponent implements OnInit {
     console.log('filler');
     console.log(this.filler);
     this.theFormGroup = new FormGroup({
-      "name": new FormControl(self.filler.name, Validators.required),
-      "price": new FormControl(self.filler.price, Validators.required),
-      "vendor-code": new FormControl(self.filler.vendorCode, Validators.required),
-      "category": new FormControl(self.filler.category, Validators.required),
-      "chipset": new FormControl(self.filler.chipset, Validators.required),
-      "form-factor": new FormControl(self.filler.formFactor, Validators.required),
-      "socket": new FormControl(self.filler.socket, Validators.required),
-      "core-number": new FormControl(self.filler.coreNumber, Validators.required),
-      "frequency": new FormControl(self.filler.frequency, Validators.required),
-      "video-memory": new FormControl(self.filler.videoMemory, Validators.required),
-    })
+      'name': new FormControl(self.filler.name, Validators.required),
+      'price': new FormControl(self.filler.price, Validators.pattern(/^[0-9,\.]{2,}$/)),
+      'vendor-code': new FormControl(self.filler.vendorCode, Validators.required),
+      'category': new FormControl(self.filler.category, Validators.required),
+      'chipset': new FormControl(self.filler.chipset, Validators.required),
+      'form-factor': new FormControl(self.filler.formFactor, Validators.required),
+      'socket': new FormControl(self.filler.socket, Validators.required),
+      'core-number': new FormControl(self.filler.coreNumber, Validators.pattern(/^[0-9]{2,}$/)),
+      'frequency': new FormControl(self.filler.frequency, Validators.pattern(/^[0-9]{2,}$/)),
+      'video-memory': new FormControl(self.filler.videoMemory, Validators.pattern(/^[0-9]{2,}$/)),
+    });
   }
-
 
 
   private applyProductValuesForFiller(product: Product) {
@@ -55,9 +68,9 @@ export class ModalEditComponent implements OnInit {
     console.log(product);
     if (product instanceof Motherboard) {
       this.filler.category = 'motherboards';
-    } else if(product instanceof CPU) {
+    } else if (product instanceof CPU) {
       this.filler.category = 'cpu';
-    } else if(product instanceof VideoCard) {
+    } else if (product instanceof VideoCard) {
       this.filler.category = 'video-cards';
     } else {
       //do nothing
@@ -75,7 +88,7 @@ export class ModalEditComponent implements OnInit {
     this.filler.videoMemory = product['videoMemory'];
   }
 
-  private applyFillerValuesForProduct(product: Product){
+  private applyFillerValuesForProduct(product: Product) {
     // this.product['id'] = this.theFormGroup.controls['id'].value;
     this.product['name'] = this.theFormGroup.controls['name'].value;
     this.product['vendorCode'] = this.theFormGroup.controls['vendor-code'].value;
@@ -97,7 +110,29 @@ export class ModalEditComponent implements OnInit {
     this.productService.putUpdatedProduct(this.product);
 
   }
-  // closeForm() {
-  //
-  // }
+
+  addProductButtonTappped() {
+    //здесь надо добавить
+
+
+    this.closeEmitter.emit();
+  }
+
+  closeButtonTapped() {
+    this.closeEmitter.emit();
+  }
+
+  isFormValid(): boolean {
+
+    return this.theFormGroup.controls['name'].valid &&
+      this.theFormGroup.controls['vendor-code'].valid &&
+      this.theFormGroup.controls['price'].valid && (
+        this.theFormGroup.controls['chipset'].valid &&
+        this.theFormGroup.controls['form-factor'].valid ||
+        this.theFormGroup.controls['socket'].valid &&
+        this.theFormGroup.controls['core-number'].valid &&
+        this.theFormGroup.controls['frequency'].valid ||
+        this.theFormGroup.controls['video-memory'].valid
+      );
+  }
 }
