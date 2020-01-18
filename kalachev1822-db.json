@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "category": "motherboard",
+      "category": "motherboards",
       "id": "1",
       "name": "Материнская плата GIGABYTE GA-AB350M-DS3H V2",
       "vendor-code": "1317748",
@@ -10,7 +10,7 @@
       "form-factor": "Micro-ATX"
     },
     {
-      "category": "motherboard",
+      "category": "motherboards",
       "id": "2",
       "name": "Материнская плата GIGABYTE X470 AORUS ULTRA GAMING",
       "vendor-code": "4317748",
@@ -39,7 +39,7 @@
       "frequency": "3800"
     },
     {
-      "category": "video-card",
+      "category": "video-cards",
       "id": "5",
       "name": "Видеокарта ASUS AMD Radeon RX 560 STRIX OC",
       "vendor-code": "2216468",
@@ -47,7 +47,7 @@
       "video-memory": "4"
     },
     {
-      "category": "video-card",
+      "category": "video-cards",
       "id": "6",
       "name": "Видеокарта GIGABYTE GeForce GTX 1650 Mini ITX OC",
       "vendor-code": "2115498",

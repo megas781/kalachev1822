@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Product, Motherboard, CPU, VideoCard} from './shared/models/product';
 import {ajaxGet} from 'rxjs/internal-compatibility';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+// import * as http from 'http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +16,33 @@ export class ProductService {
     // this.fetchProducts().then(() => console.log("then what??"));
   }
 
-  fetchProducts(): Promise<Product[]> {
+
+  fetchProducts(category?: string): Promise<Product[]> {
+    console.log('fetch!');
     let self = this;
     return new Promise<Product[]>(function(resolve, reject) {
-      ajaxGet('http://localhost:3000/products').subscribe(function(ajax) {
+      // console.log(self.httpHeaders);
+      // self.http.get('http://localhost:3000/products', {}).subscribe(function(value) {
+      //   console.log(value);
+      // });
+      let url = `http://localhost:3000/products${category ? `?category=${category}`: ''}`;
+      // console.log(url);
+      ajaxGet(url).subscribe(function(ajax) {
+
         // console.log(ajax.response);
+        if (ajax.status !== 200) {
+          return;
+        }
 
         if (ajax.response instanceof Array) {
+          // console.log(ajax.response.length);
            self.products = (<Array<Object>>ajax.response).map(function(productJson) {
              switch (productJson['category']) {
-               case 'motherboard':
+               case 'motherboards':
                  return Motherboard.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['chipset'], productJson['form-factor']);
                case 'cpu':
                  return CPU.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['socket'], productJson['core-number'], productJson['frequency']);
-               case 'video-card':
+               case 'video-cards':
                  return VideoCard.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['video-memory']);
                default:
                  return null;
@@ -41,4 +56,36 @@ export class ProductService {
       });
     })
   }
+  // fetchMotherboards(): Promise<Motherboard[]> {
+  //   let self = this;
+  //   return new Promise<Motherboard[]>(function(resolve, reject) {
+  //     ajaxGet('http://localhost:3000/products?category=motherboard').subscribe(function(ajax) {
+  //
+  //       if (ajax.response instanceof Array) {
+  //         self.products = (<Array<Object>>ajax.response).map(function(productJson) {
+  //           return Motherboard.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['chipset'], productJson['form-factor']);
+  //         });
+  //         resolve(<Motherboard[]>self.products);
+  //       } else {
+  //         reject();
+  //       }
+  //     });
+  //   })
+  // }
+  // fetchMotherboards(): Promise<CPU[]> {
+  //   let self = this;
+  //   return new Promise<CPU[]>(function(resolve, reject) {
+  //     ajaxGet('http://localhost:3000/products?category=cpu').subscribe(function(ajax) {
+  //
+  //       if (ajax.response instanceof Array) {
+  //         self.products = (<Array<Object>>ajax.response).map(function(productJson) {
+  //           return Motherboard.init(productJson['id'], productJson['name'], productJson['vendor-code'], productJson['price'], productJson['chipset'], productJson['form-factor']);
+  //         });
+  //         resolve(<Motherboard[]>self.products);
+  //       } else {
+  //         reject();
+  //       }
+  //     });
+  //   })
+  // }
 }

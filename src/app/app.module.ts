@@ -30,8 +30,13 @@ import { ProductFilterPipe } from './product-filter.pipe';
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: MainPageComponent},
+      // {path: 'products/:category', component: ProductsListComponent},
+      // {path: 'products/motherboards', component: ProductsListComponent},
+      // {path: 'products/cpu', component: ProductsListComponent},
+      // {path: 'products/video-cards', component: ProductsListComponent},
+      {path: "products/:category", component: ProductsListComponent},
       {path: 'products', component: ProductsListComponent},
-      {path: 'products/:category', component: ProductsListComponent},
+      {path: '**', component: NotFoundComponent},
     ])
   ],
   providers: [],

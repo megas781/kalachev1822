@@ -7,6 +7,10 @@ import {Product} from './shared/models/product';
 export class ProductSortPipe implements PipeTransform {
 
   transform(productList: Product[], sortKey: string, direction: number): Product[] {
+    // if (productList[0] === null) {
+    //   return [];
+    // }
+    console.log(productList);
     console.log(`sortKey: ${sortKey}; direction: ${direction}`)
     switch (sortKey) {
       case 'price':

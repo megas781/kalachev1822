@@ -27,9 +27,14 @@ export class ProductsListComponent implements OnInit {
     public productService: ProductService,
     public activatedRoute: ActivatedRoute
   ) {
-    productService.fetchProducts().then(function(products) {
-      console.log(products);
-    });
+
+    activatedRoute.params.subscribe(function(value) {
+      if (value['category']) {
+        productService.fetchProducts(value['category']).then(r => 0);
+      } else {
+        productService.fetchProducts().then(r => 0);
+      }
+    })
 
   }
 
