@@ -16,3 +16,14 @@
 .search-input {
   /*width: 100%;*/
 }
+
+
+.sortable-property {
+
+}
+.sortable-property.active-down::after {
+  content: '↓';
+}
+.sortable-property.active-up::after {
+  content: '↑';
+}
