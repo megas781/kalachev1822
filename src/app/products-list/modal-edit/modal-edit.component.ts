@@ -102,20 +102,28 @@ export class ModalEditComponent implements OnInit {
   }
 
   submitForm() {
-
-    this.applyFillerValuesForProduct(this.product);
-    // this.product.name = 'asdf';
-    console.log(this.product);
-    this.closeEmitter.emit();
-    this.productService.putUpdatedProduct(this.product);
+    console.log(this.isNewProduct);
+    let self = this;
+    if (this.isNewProduct) {
+      let newProduct: Product;
+      this.productService.fetchLastId().then(function(lastId) {
+        console.log(`lastId: ${lastId}`);
+        self.closeEmitter.emit();
+      });
+    } else {
+    //здесь сохраниние изенения
+      this.applyFillerValuesForProduct(this.product);
+      // this.product.name = 'asdf';
+      console.log(this.product);
+      this.closeEmitter.emit();
+      this.productService.putUpdatedProduct(this.product);
+    }
 
   }
 
   addProductButtonTappped() {
     //здесь надо добавить
 
-
-    this.closeEmitter.emit();
   }
 
   closeButtonTapped() {

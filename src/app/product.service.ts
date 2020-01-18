@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Product, Motherboard, CPU, VideoCard} from './shared/models/product';
 import {ajaxGet, ajaxPut} from 'rxjs/internal-compatibility';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-// import * as http from 'http';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +61,22 @@ export class ProductService {
   putUpdatedProduct(product: Product) {
     ajaxPut(`http://localhost:3000/products/${product.id}`, product.getJson()).subscribe(function(ajax) {
       console.log(ajax.response);
+    })
+  }
+
+  addProduct(product: Product) {
+    ajaxPut(`http://localhost:3000/products/${product.id}`, product.getJson()).subscribe(function(ajax) {
+      console.log(ajax.response);
+    })
+  }
+  fetchLastId(): Promise<number> {
+    return new Promise<number>(function(resolve, reject) {
+      ajaxGet('http://localhost:3000/metadata').subscribe(function(ajax) {
+        resolve((Number(ajax.response['lastId']) + 1));
+        ajaxPut('http://localhost:3000/metadata', {lastId: (Number(ajax.response['lastId']) + 1)}).subscribe(function(ajax) {
+          console.log('сохранил lastId');
+        })
+      });
     })
   }
 }
