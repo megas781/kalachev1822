@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
+import {Product} from '../shared/models/product';
 
 @Component({
   selector: 'app-products-list',
@@ -55,6 +56,13 @@ export class ProductsListComponent implements OnInit {
       this.activeSortProperty = tappedFilter;
     }
 
+  }
+
+  editProduct(product: Product) {
+    console.log(product);
+  }
+  deleteProduct(product: Product) {
+    console.log(product);
   }
 
 }

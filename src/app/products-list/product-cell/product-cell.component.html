@@ -1,10 +1,8 @@
-<!--<tr>-->
-  <th scope="row" class="vendor-code-column d-md-table-cell">{{product.vendorCode}}</th>
-  <td>{{product.name}}</td>
-  <td class="price">{{product.price}} руб</td>
-  <td class="description-column d-md-table-cell">{{product.getDescription()}}</td>
-  <td style="display: flex">
-    <button class="btn btn-success">📝</button>
-    <button class="btn btn-danger">🗑</button>
-  </td>
-<!--</tr>-->
+<th scope="row" class="vendor-code-column d-md-table-cell">{{product.vendorCode}}</th>
+<td>{{product.name}}</td>
+<td class="price">{{product.price}} руб</td>
+<td class="description-column d-md-table-cell">{{product.getDescription()}}</td>
+<td style="display: flex">
+  <button class="btn btn-success" (click)="editEventEmitter.emit(product)">📝</button>
+  <button class="btn btn-danger" (click)="deleteEventEmitter.emit(product)">🗑</button>
+</td>

@@ -7,35 +7,20 @@
   </button>
   <div class="navbar-collapse" [class.collapse]="showMobileNavbar" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-<!--      <li class="nav-item active">-->
-<!--        <a class="nav-link" routerLink="/">Главная</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/products">Весь каталог</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/products/motherboards">Материнские платы</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/products/cpu">Процессоры</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/products/video-cards">Видеокарты</a>-->
-<!--      </li>-->
       <li class="nav-item active">
-        <a class="nav-link" (click)="navLinkTapped('/')">Главная</a>
+        <a class="nav-link" routerLink="/">Главная</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="navLinkTapped('/products')">Весь каталог</a>
+        <a class="nav-link" routerLink="/products">Весь каталог</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="navLinkTapped('/products/motherboards')">Материнские платы</a>
+        <a class="nav-link" routerLink="/products/motherboards">Материнские платы</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="navLinkTapped('/products/cpu')">Процессоры</a>
+        <a class="nav-link" routerLink="/products/cpu">Процессоры</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="navLinkTapped('/products/video-cards')">Видеокарты</a>
+        <a class="nav-link" routerLink="/products/video-cards">Видеокарты</a>
       </li>
     </ul>
   </div>

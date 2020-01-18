@@ -39,7 +39,9 @@
   <tbody>
   <tr class="product-cell-selector"
   *ngFor="let product of productService.products | productSort : this.activeSortProperty : getActiveSortDirection() | productFilter: searchString: searchType"
-  [product]="product"></tr>
+  [product]="product"
+  (editEventEmitter)="editProduct($event)"
+  (deleteEventEmitter)="deleteProduct($event)"></tr>
   </tbody>
 </table>
 <app-modal-edit></app-modal-edit>

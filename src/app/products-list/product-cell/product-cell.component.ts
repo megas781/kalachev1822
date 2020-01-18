@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../shared/models/product';
 
 @Component({
@@ -9,10 +9,18 @@ import {Product} from '../../shared/models/product';
 export class ProductCellComponent implements OnInit {
 
   @Input('product') product: Product;
+  @Output() editEventEmitter = new EventEmitter();
+  @Output() deleteEventEmitter = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  // editButtonTapped(product: Product) {
+  //
+  // }
+  // deleteButtonTapped(product: Product) {
+  //
+  // }
 }
