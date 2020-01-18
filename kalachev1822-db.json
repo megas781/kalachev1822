@@ -1,0 +1,62 @@
+{
+  "products": [
+    {
+      "type": "motherboard",
+      "id": "1",
+      "name": "Материнская плата GIGABYTE GA-AB350M-DS3H V2",
+      "vendor-code": "1317748",
+      "price": "3890",
+      "chipset": "AMD B350",
+      "form-factor": "Micro-ATX"
+    },
+    {
+      "type": "motherboard",
+      "id": "2",
+      "name": "Материнская плата GIGABYTE X470 AORUS ULTRA GAMING",
+      "vendor-code": "4317748",
+      "price": "7490",
+      "chipset": "AMD X470",
+      "form-factor": "Standard-ATX"
+    },
+    {
+      "type": "cpu",
+      "id": "3",
+      "name": "Intel Core i3-9300 OEM",
+      "vendor-code": "4317568",
+      "price": "12899",
+      "socket": "LGA 1151-v2\n",
+      "core-number": "4",
+      "frequency": "3700"
+    },
+    {
+      "type": "cpu",
+      "id": "4",
+      "name": "Intel Core i5-8600",
+      "vendor-code": "4357501",
+      "price": "18899",
+      "socket": "LGA 1152-v3\n",
+      "core-number": "4",
+      "frequency": "3800"
+    },
+    {
+      "type": "video-card",
+      "id": "5",
+      "name": "Видеокарта ASUS AMD Radeon RX 560 STRIX OC",
+      "vendor-code": "2216468",
+      "price": "10099",
+      "video-memory": "4"
+    },
+    {
+      "type": "video-card",
+      "id": "6",
+      "name": "Видеокарта GIGABYTE GeForce GTX 1650 Mini ITX OC",
+      "vendor-code": "2115498",
+      "price": "10099",
+      "video-memory": "4"
+    }
+
+  ],
+  "metadata": {
+    "lastId": "6"
+  }
+}
