@@ -33,6 +33,7 @@ export class ProductsListComponent implements OnInit {
       this.sortableProperties['price'] = 0;
 
       this.sortableProperties[tappedFilter] = 1;
+      this.activeSortProperty = tappedFilter;
     }
 
   }

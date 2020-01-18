@@ -1,22 +1,35 @@
 <div class="container">
   <div class="row">
-<!--    <div class="">-->
-<!--      <span class="input-group-text" id="basic-addon1">@</span>-->
-      <select name="" id="" class="input-group-prepend form-control search-select search-form-control col-md-3">
-        <option value="filter-by-name">По названию</option>
-        <option value="filter-by-vendor-code">По артикулу</option>
-      </select>
-<!--    </div>-->
-    <input type="text" class="form-control search-form-control search-input col-md-9" placeholder="Поиск по каталогу..." aria-label="Username" aria-describedby="basic-addon1">
+    <!--    <div class="">-->
+    <!--      <span class="input-group-text" id="basic-addon1">@</span>-->
+    <select name="" id="" class="input-group-prepend form-control search-select search-form-control col-md-3">
+      <option value="filter-by-name">По названию</option>
+      <option value="filter-by-vendor-code">По артикулу</option>
+    </select>
+    <!--    </div>-->
+    <input type="text" class="form-control search-form-control search-input col-md-9" placeholder="Поиск по каталогу..."
+           aria-label="Username" aria-describedby="basic-addon1">
   </div>
 </div>
 
 <table class="table">
   <thead>
   <tr>
-    <th scope="col" class="sortable-property vendor-code-column d-md-table-cell">Артикул</th>
-    <th scope="col" class="sortable-property">Название</th>
-    <th scope="col" class="sortable-property">Цена</th>
+    <th scope="col" class="sortable-property vendor-code-column d-md-table-cell"
+        (click)="sortablePropertyTapped('vendor-code')"
+        [class.active-down]="sortableProperties['vendor-code'] == 1"
+        [class.active-up]="sortableProperties['vendor-code'] == -1">Артикул
+    </th>
+    <th scope="col" class="sortable-property"
+        (click)="sortablePropertyTapped('name')"
+        [class.active-down]="sortableProperties['name'] == 1"
+        [class.active-up]="sortableProperties['name'] == -1">Название
+    </th>
+    <th scope="col" class="sortable-property"
+        (click)="sortablePropertyTapped('price')"
+        [class.active-down]="sortableProperties['price'] == 1"
+        [class.active-up]="sortableProperties['price'] == -1">Цена
+    </th>
     <th scope="col" class="description-column d-md-table-cell">Описание</th>
     <th scope="col">Действия</th>
   </tr>

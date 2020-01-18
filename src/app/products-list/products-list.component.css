@@ -19,7 +19,11 @@
 
 
 .sortable-property {
-
+  cursor: pointer;
+  user-select: none;
+}
+.sortable-property::after {
+  content: 'ᐧ';
 }
 .sortable-property.active-down::after {
   content: '↓';
