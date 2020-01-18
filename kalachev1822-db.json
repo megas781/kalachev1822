@@ -53,9 +53,17 @@
       "vendor-code": "2115498",
       "price": "10099",
       "video-memory": "4"
+    },
+    {
+      "name": "213",
+      "id": "8",
+      "vendor-code": "123",
+      "price": "123",
+      "video-memory": "123",
+      "category": "video-cards"
     }
   ],
   "metadata": {
-    "lastId": "6"
+    "lastId": "8"
   }
 }

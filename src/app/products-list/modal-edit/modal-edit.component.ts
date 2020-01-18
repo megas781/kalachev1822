@@ -2,6 +2,8 @@ import {AfterContentChecked, AfterViewChecked, AfterViewInit, Component, EventEm
 import {CPU, Motherboard, Product, VideoCard} from '../../shared/models/product';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../product.service';
+import {ajax} from 'rxjs/ajax';
+import {ajaxPut} from 'rxjs/internal-compatibility';
 
 
 @Component({
@@ -89,16 +91,15 @@ export class ModalEditComponent implements OnInit {
   }
 
   private applyFillerValuesForProduct(product: Product) {
-    // this.product['id'] = this.theFormGroup.controls['id'].value;
-    this.product['name'] = this.theFormGroup.controls['name'].value;
-    this.product['vendorCode'] = this.theFormGroup.controls['vendor-code'].value;
-    this.product['price'] = this.theFormGroup.controls['price'].value;
-    this.product['chipset'] = this.theFormGroup.controls['chipset'].value;
-    this.product['formFactor'] = this.theFormGroup.controls['form-factor'].value;
-    this.product['socket'] = this.theFormGroup.controls['socket'].value;
-    this.product['coreNumber'] = this.theFormGroup.controls['core-number'].value;
-    this.product['frequency'] = this.theFormGroup.controls['frequency'].value;
-    this.product['videoMemory'] = this.theFormGroup.controls['video-memory'].value;
+    product['name'] = this.theFormGroup.controls['name'].value;
+    product['vendorCode'] = this.theFormGroup.controls['vendor-code'].value;
+    product['price'] = this.theFormGroup.controls['price'].value;
+    product['chipset'] = this.theFormGroup.controls['chipset'].value;
+    product['formFactor'] = this.theFormGroup.controls['form-factor'].value;
+    product['socket'] = this.theFormGroup.controls['socket'].value;
+    product['coreNumber'] = this.theFormGroup.controls['core-number'].value;
+    product['frequency'] = this.theFormGroup.controls['frequency'].value;
+    product['videoMemory'] = this.theFormGroup.controls['video-memory'].value;
   }
 
   submitForm() {
@@ -108,6 +109,11 @@ export class ModalEditComponent implements OnInit {
       let newProduct: Product;
       this.productService.fetchLastId().then(function(lastId) {
         console.log(`lastId: ${lastId}`);
+
+        let newProduct = self.getNewProduct(lastId);
+
+        self.productService.postNewProduct(newProduct);
+        self.productService.products.push(newProduct);
         self.closeEmitter.emit();
       });
     } else {
@@ -121,9 +127,25 @@ export class ModalEditComponent implements OnInit {
 
   }
 
-  addProductButtonTappped() {
-    //здесь надо добавить
+  private getNewProduct(id: number): Product {
+    let returnProduct: Product;
+    switch (this.theFormGroup.controls['category'].value){
+      case 'motherboards':
+        returnProduct = new Motherboard(0,'','',0,'','');
+        break;
+      case 'cpu':
+        returnProduct = new CPU(0,'','',0,'',0,0);
+        break;
+      case 'video-cards':
+        returnProduct = new VideoCard(0,'','',0,0);
+        break;
+      default:
+        break;
+    }
 
+    this.applyFillerValuesForProduct(returnProduct);
+    returnProduct.id = id;
+    return returnProduct;
   }
 
   closeButtonTapped() {
