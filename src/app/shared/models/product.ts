@@ -15,7 +15,7 @@ export abstract class Product {
     return `${this.price} руб`;
   }
   public getDescription(): string {
-    return `${this.vendorCode}, цена: ${this.price}`;
+    return '';
   }
 }
 export class Motherboard extends Product {
@@ -33,7 +33,7 @@ export class Motherboard extends Product {
   }
 
   public getDescription(): string {
-    return super.getDescription() + `, чипсет: ${this.chipset}, форм-фактор: ${this.formFactor}`;
+    return super.getDescription() + `Чипсет: ${this.chipset}, форм-фактор: ${this.formFactor}`;
   }
 }
 export class CPU extends Product {
@@ -53,7 +53,7 @@ export class CPU extends Product {
   }
 
   public getDescription(): string {
-    return super.getDescription() + `, сокет: ${this.socket}, количество ядер: ${this.coreNumber}, частота: ${this.frequency}`;
+    return super.getDescription() + `Сокет: ${this.socket}, количество ядер: ${this.coreNumber}, частота: ${this.frequency} МГц`;
   }
 }
 export class VideoCard extends Product {
@@ -68,6 +68,6 @@ export class VideoCard extends Product {
     return new VideoCard(Number(id), name, vendorCode, Number(price), Number(videoMemory))
   }
   getDescription(): string {
-    return super.getDescription() + `, видеопамять: ${this.videoMemory}`;
+    return super.getDescription() + `Видеопамять: ${this.videoMemory} Гб`;
   }
 }
